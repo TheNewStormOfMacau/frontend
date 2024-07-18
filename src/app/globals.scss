@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$pink: rgb(255, 89, 128);
+$purple: #692f77;
+
+@mixin bg-pink {
+  background-color: $pink;
+}
+@mixin text-pink {
+  color: $pink;
+}
+@mixin border-pink {
+  border-color: $pink;
+}
+
+@mixin bg-purple {
+  background-color: $purple;
+}
+
+.bg-pink {
+  @include bg-pink;
+}
+.text-pink {
+  @include text-pink;
+}
+.border-pink {
+  @include border-pink;
+}
+.bg-purple {
+  @include bg-purple;
+}
+.hover-bg-purple:hover {
+  @include bg-purple;
+}
+.shadow-pink {
+  --tw-shadow-color: $pink;
+}
+
+main {
+  @apply flex flex-col justify-center items-center;
+}
+
+.button {
+  @apply transition-all cursor-pointer;
+  @apply bg-white font-bold rounded-full py-1 px-8;
+  @apply text-black;
+  &:hover {
+    @apply bg-opacity-70;
+  }
+  &__primary {
+    @include bg-pink;
+    @apply text-white;
+    &:hover {
+      @apply bg-opacity-70;
+    }
+  }
+  &__big {
+    @apply text-2xl;
+    @apply py-2 px-10;
+  }
+}
+
+.card {
+  @apply bg-black rounded-2xl m-4 p-6;
+  @apply border-2;
+  @include border-pink;
+  @apply text-white;
+  @apply hover:bg-opacity-70 hover:cursor-pointer;
+  @apply transition-all;
+  &:hover {
+    @apply bg-pink;
+    .icon {
+      @apply text-white;
+    }
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.bg-city {
+  background-image: url(../../public/city.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.5);
+  @apply bg-blend-overlay;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #fff, rgb(227, 54, 126));
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.nav-link {
+  @apply text-white font-bold text-lg;
+}
+
+h1 {
+  @apply text-5xl font-bold;
+}
+
+h2 {
+  @apply text-4xl font-bold;
+}
+
+h3 {
+  @apply text-3xl font-bold;
+}
+
+.window-cover {
+  @apply fixed z-10 flex justify-center items-center bg-black bg-opacity-40;
+  @apply left-0 top-0 right-0 bottom-0;
+}
+
+.window {
+  @apply p-8;
+  @apply rounded-3xl;
+  @include bg-purple;
+}
+
+.icon {
+  @apply text-pink ml-2;
+}
+
+.center {
+  @apply left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 absolute;
+}
