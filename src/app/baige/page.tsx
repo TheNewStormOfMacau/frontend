@@ -15,6 +15,7 @@ const text3 =
 export default function Baige() {
   const [book, setBook] = useState<string>("");
   const [chosen, setChosen] = useState<boolean[]>(Array(120));
+  const [loading, setLoading] = useState<boolean>(false);
 
   const chosenNum = chosen.filter((x) => x).length;
 
@@ -26,6 +27,7 @@ export default function Baige() {
   };
 
   const startGame = async (selected: number[]) => {
+    setLoading(true);
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
 
@@ -45,6 +47,8 @@ export default function Baige() {
     } catch (e) {
       console.error(e);
       alert("交易失败或已取消，请重试。");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -124,18 +128,22 @@ export default function Baige() {
             ))}
         </div>
         {chosenNum === 15 ? (
-          <button
-            className="button my-8"
-            onClick={() =>
-              startGame(
-                chosen
-                  .map((val, index) => (val ? index : -1))
-                  .filter((x) => x !== -1)
-              )
-            }
-          >
-            确认选择
-          </button>
+          <>
+            <button
+              className="button my-8"
+              onClick={() =>
+                startGame(
+                  chosen
+                    .map((val, index) => (val ? index : -1))
+                    .filter((x) => x !== -1)
+                )
+              }
+              disabled={loading}
+            >
+              确认选择
+            </button>
+            {loading && <p>加载中，请稍候……</p>}
+          </>
         ) : (
           <p className="my-8">请选择 15 个字符，已选 {chosenNum} 个。</p>
         )}

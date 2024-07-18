@@ -3,19 +3,15 @@
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import { ethers } from "ethers";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Exchange() {
-  const exchange = async (amount) => {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const exchange = async (amount: number) => {
+    setLoading(true);
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-
-    // const address = await signer.getAddress();
-    // console.log("Signer address:", address);
-
-    // const balance = await provider.getBalance(address);
-    // console.log("Balance:", ethers.formatEther(balance));
-
     const abi = ["function exchangeToken() public"];
     const contract = new ethers.Contract(
       "0xd18321420B9D9AdB69C80cD04e1dDb6A4e785FcF",
@@ -29,6 +25,8 @@ export default function Exchange() {
       await tx.wait();
     } catch (e) {
       alert("交易失败或已取消，请重试。");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -44,7 +42,11 @@ export default function Exchange() {
             width={100}
             height={100}
           ></Image>
-          <button className="button mt-4" onClick={() => exchange(0.0001)}>
+          <button
+            className="button mt-4"
+            onClick={() => exchange(0.0001)}
+            disabled={loading}
+          >
             100 RCs
           </button>
           <p className="mt-2">0.0001 ETH</p>
@@ -56,7 +58,11 @@ export default function Exchange() {
             width={200}
             height={200}
           ></Image>
-          <button className="button mt-4" onClick={() => exchange(0.0005)}>
+          <button
+            className="button mt-4"
+            onClick={() => exchange(0.0005)}
+            disabled={loading}
+          >
             500 RCs
           </button>
           <p className="mt-2">0.0005 ETH</p>
@@ -68,12 +74,17 @@ export default function Exchange() {
             width={100}
             height={100}
           ></Image>
-          <button className="button mt-4" onClick={() => exchange(0.001)}>
+          <button
+            className="button mt-4"
+            onClick={() => exchange(0.001)}
+            disabled={loading}
+          >
             1000 RCs
           </button>
           <p className="mt-2">0.001 ETH</p>
         </div>
       </div>
+      {loading && <p>加载中，请稍候……</p>}
     </main>
   );
 }

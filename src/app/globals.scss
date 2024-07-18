@@ -60,6 +60,10 @@ main {
     @apply text-2xl;
     @apply py-2 px-10;
   }
+  &:disabled {
+    @apply bg-gray-400;
+    @apply cursor-not-allowed;
+  }
 }
 
 .card {
