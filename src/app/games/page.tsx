@@ -51,7 +51,12 @@ export default function Home() {
             <h2 className="text-2xl font-bold">社区治理</h2>
             <i className="bi bi-buildings icon absolute right-5 bottom-5 text-8xl"></i>
           </div>
-          <div className="card w-[50%] relative">
+          <div
+            className="card w-[50%] relative"
+            onClick={() =>
+              (location.href = "https://github.com/TheNewStormOfMacau/frontend")
+            }
+          >
             <h2 className="text-2xl font-bold">查看代码</h2>
             <i className="bi bi-code-slash icon absolute right-5 bottom-5 text-8xl"></i>
           </div>

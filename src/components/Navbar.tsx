@@ -6,6 +6,7 @@ import Model from "./Model";
 export default function Navbar(props: { account: string }) {
   const router = useRouter();
   const [showDaoModel, setShowDaoModel] = useState<boolean>(false);
+  const [showSigninModel, setShowSigninModel] = useState<boolean>(false);
   return (
     <>
       <nav className="bg-pink fixed p-2 m-4 rounded-full top-4 w-11/12">
@@ -21,7 +22,9 @@ export default function Navbar(props: { account: string }) {
             </a>
           </li>
           <li className="mx-2">
-            <a className="nav-link">签到登录</a>
+            <a className="nav-link" onClick={() => setShowSigninModel(true)}>
+              签到登录
+            </a>
           </li>
           <li className="mx-2">
             <a className="nav-link" onClick={() => router.push("/property")}>
@@ -49,6 +52,15 @@ export default function Navbar(props: { account: string }) {
       <Model showModel={showDaoModel} onClose={() => setShowDaoModel(false)}>
         <div className="p-16 text-center">
           <h3>社区治理（DAO）暂未开放</h3>
+          <p className="mt-4">敬请期待</p>
+        </div>
+      </Model>
+      <Model
+        showModel={showSigninModel}
+        onClose={() => setShowSigninModel(false)}
+      >
+        <div className="p-16 text-center">
+          <h3>签到登录</h3>
           <p className="mt-4">敬请期待</p>
         </div>
       </Model>
