@@ -6,6 +6,8 @@ import StartButton from "@/components/StartButton";
 import { connectWallet } from "@/utils/web3";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
+import Circles from "@/components/Circles";
 
 export default function Index() {
   const [showConnectModel, setShowConnectModel] = useState<boolean>(false);
@@ -13,20 +15,21 @@ export default function Index() {
   const router = useRouter();
 
   return (
-    <main className="text-white">
+    <main className="text-white relative">
       <Navbar account={account} />
       <section className="flex flex-col min-h-screen mt-24">
-        <h1 className="text-center leading-relaxed my-24">
+        <h1 className="text-center text-gradient mt-32 text-6xl">玫瑰花园</h1>
+        <h3 className="text-center mt-8">
           链上<span className="text-pink">公益</span>游戏平台
-        </h1>
-        <button className="button button__big button__primary my-8">
+        </h3>
+        <Circles className="absolute left-0 top-32 -translate-x-1/2" text="" />
+        <Circles className="absolute right-0 top-24 translate-x-1/2" text="" />
+        <button className="button button__big button__primary mt-16">
           游戏玩法
         </button>
         <button
-          className="button button__big my-8"
-          onClick={() => {
-            setShowConnectModel(true);
-          }}
+          className="button button__big mt-8"
+          onClick={() => setShowConnectModel(true)}
         >
           链接钱包
         </button>
@@ -63,6 +66,15 @@ export default function Index() {
           <br />
           智能合约来自动执行游戏规则和支付结算
         </h1>
+      </section>
+      <section>
+        <Image
+          className="my-16"
+          src="/flow.png"
+          alt="Game Flow"
+          width={1000}
+          height={1000}
+        />
       </section>
       <section className="min-h-screen w-full flex flex-col justify-center items-center">
         <StartButton onClick={() => router.push("/intro")} />

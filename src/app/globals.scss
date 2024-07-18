@@ -97,6 +97,7 @@ main {
 
 .nav-link {
   @apply text-white font-bold text-lg;
+  @apply cursor-pointer;
 }
 
 h1 {

@@ -23,7 +23,7 @@ export default function Coin() {
         showModel={showPriorityModel}
         onClose={() => setShowPriorityModel(false)}
       >
-        设置赛道优先级
+        暂未开放，敬请期待
       </Model>
       <Image
         className="fixed -left-64 top-32"

@@ -17,7 +17,7 @@ export default function Cake(props: {
 }) {
   if (props.unlocked) {
     return (
-      <div className="w-48 h-48 m-8 relative">
+      <div className="w-48 h-48 m-8 relative drop-shadow-lg">
         <Image
           className="center drop-shadow-lg"
           height={192}

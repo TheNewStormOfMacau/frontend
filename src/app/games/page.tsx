@@ -2,45 +2,16 @@
 
 import Model from "@/components/Model";
 import Navbar from "@/components/Navbar";
-import { ethers } from "ethers";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
-  const [account, setAccount] = useState<string>("");
   const [showDaoModel, setShowDaoModel] = useState<boolean>(false);
   const router = useRouter();
 
-  //   const getBalance = async () => {
-  //     const ALCHEMY_SEPOLIA_URL = "https://rpc.sepolia.org";
-  //     const provider = new ethers.JsonRpcProvider(ALCHEMY_SEPOLIA_URL);
-
-  //     const privateKey =
-  //       "0x227dbb8586117d55284e26620bc76534dfbd2394be34cf4a09cb775d593b6f2b";
-  //     const wallet = new ethers.Wallet(privateKey, provider);
-
-  //     const abiWETH = ["function balanceOf(address) public view returns(uint)"];
-  //     const contractAddress = "0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6";
-  //     const contract = new ethers.Contract(contractAddress, abiWETH, wallet);
-
-  //     const address = await wallet.getAddress();
-  //     const balance = await contract.balanceOf(address);
-  //     console.log(`Balance: ${ethers.formatEther(balance)}\n`);
-
-  //     // const tx = await contract.deposit({ value: ethers.parseEther("0.001") });
-  //     // await tx.wait();
-
-  //     const network = await provider.getNetwork();
-  //     console.log("Network: ", network.toJSON());
-  //   };
-
-  //   useEffect(() => {
-  //     getBalance();
-  //   });
-
   return (
     <main>
-      <Navbar account={account} />
+      <Navbar account={""} />
 
       <div className="w-10/12 flex flex-col h-fit mt-32">
         <div className="w-full flex">
