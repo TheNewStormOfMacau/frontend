@@ -11,7 +11,7 @@ export default function Coin() {
   const [showPriorityModel, setShowPriorityModel] = useState<boolean>(false);
 
   useEffect(() => {
-    const url = new URL("http://30.201.208.33:8888/api/v1/getuserinfo");
+    const url = new URL("http://119.29.239.184:8888/api/v1/getuserinfo");
     url.search = new URLSearchParams({
       chain_addr: "0x610254d471e86114484087A65df9ea616428CfEe",
     }).toString();

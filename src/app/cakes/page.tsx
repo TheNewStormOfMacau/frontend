@@ -11,7 +11,7 @@ export default function Cakes() {
   const flags = [1, 2, 3, 4, 5, 6].map((index) => data.includes(index));
 
   useEffect(() => {
-    const url = new URL("http://30.201.208.33:8888/api/v1/getrewardinfo");
+    const url = new URL("http://119.29.239.184:8888/api/v1/getrewardinfo");
     url.search = new URLSearchParams({
       chain_addr: "0x610254d471e86114484087A65df9ea616428CfEe",
     }).toString();
@@ -29,7 +29,7 @@ export default function Cakes() {
       <Navbar account="" />
       <div className="mt-32 flex flex-col items-center">
         <h3>已收藏鲜花饼 {data.length} 个</h3>
-        <h3 className="mt-2">其中专属鲜花饼 0 个</h3>
+        <h3 className="mt-2">其中专属鲜花饼 1 个</h3>
       </div>
       <div className="mt-8 grid grid-cols-3 grid-rows-2 justify-stretch min-w-4xl">
         {flags.map((val, index) => (
